@@ -4,22 +4,26 @@ var router = express.Router();
 require('dotenv').config();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res) {
 	var slackBase = 'https://slack.com/api/users.admin.invite';
+	var user = {
+		email: req.body.email,
+		firstName: req.body.first_name
+	};
 
 	axios.get(slackBase, {
 		params: {
 			token: process.env.CLIENT_TOKEN,
-			email:'ds321609@ohio.edu',
-			first_name: 'dan'
+			email: user.email,
+			first_name: user.firstName
 		}
-		
 	}).then(function(response) {
-		console.log(response.data);
-		res.json(response.data);
+		 res.send(response.data);
+	}).catch(function(err) {
+		 res.send(err.data);
 	});
 
-	
+
 });
 
 module.exports = router;
