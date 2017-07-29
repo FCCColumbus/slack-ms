@@ -18,6 +18,7 @@ router.post('/', function(req, res) {
 			first_name: user.firstName
 		}
 	}).then(function(response) {
+		console.log("The server sent a response");
 		 res.send(response.data);
 	}).catch(function(err) {
 		 res.send(err.data);
