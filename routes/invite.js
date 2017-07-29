@@ -19,9 +19,9 @@ router.post('/', function(req, res) {
 		}
 	}).then(function(response) {
 		console.log("The server sent a response");
-		 res.send(response.data);
+		 res.status(200).json(response.data);
 	}).catch(function(err) {
-		 res.send(err.data);
+		 res.status(500).json(err.data);
 	});
 
 
