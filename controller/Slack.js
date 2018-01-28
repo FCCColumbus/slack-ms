@@ -15,13 +15,12 @@ exports.sendInvite = async (req, res, next) => {
 		}
 	});
     
-    if(!result.ok) {
+    if(!result.data.ok) {
         const error = result.data.error;
-        // res.status(500).json(error);
         next(error);
         
     } else {
-        res.status(200).json(response.data);
+        res.status(200).json({ status: result.data.ok });
     }
 
 
