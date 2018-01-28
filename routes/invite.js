@@ -1,30 +1,11 @@
-var express = require('express');
-var axios = require('axios');
-var router = express.Router();
+const express = require('express');
+const slackController = require('../controller/Slack');
+const router = express.Router();
 require('dotenv').config();
 
 /* GET users listing. */
-router.post('/', function(req, res) {
-	var slackBase = 'https://slack.com/api/users.admin.invite';
-	var user = {
-		email: req.body.email,
-		firstName: req.body.first_name
-	};
+router.post('/', slackController.sendInvite);
 
-	axios.get(slackBase, {
-		params: {
-			token: process.env.CLIENT_TOKEN,
-			email: user.email,
-			first_name: user.firstName
-		}
-	}).then(function(response) {
-		console.log("The server sent a response");
-		 res.status(200).json(response.data);
-	}).catch(function(err) {
-		 res.status(500).json(err.data);
-	});
-
-
-});
+//original callback for Slack's API call
 
 module.exports = router;
