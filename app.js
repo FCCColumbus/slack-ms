@@ -12,6 +12,8 @@ var invite = require('./routes/invite');
 
 var app = express();
 
+require('dotenv').config()
+
 const corsOptions = {
   origin: (app.get('env') === 'development'
     ? /https?:\/\/localhost:\d+/
@@ -34,10 +36,21 @@ app.use('/invite', invite);
 
 app.use(errorHandler.notFound)
 
-if (app.get('env') === 'development') {
+// if (app.get('env') === 'development') {
+//   // development error handler - prints stack trace
+//   app.use(errorHandler.developmentErrors)
+// }
+
+// if (app.get('env') === 'development') {
+//   // development error handler - prints stack trace
+//   app.use(errorHandler.developmentErrors)
+// }
+
+if (process.NODE_ENIVORNMENT === 'development') {
   // development error handler - prints stack trace
   app.use(errorHandler.developmentErrors)
 }
+
 
 app.use(errorHandler.productionErrors)
 

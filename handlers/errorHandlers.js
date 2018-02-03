@@ -32,15 +32,16 @@
   
     // eslint-disable-next-line no-console
     // errorKeys.forEach((key) => console.log(err.errors[key].message))
-    res.status(500).send(err)
+    // res.status(500).send(err)
+    next(err)
   }
   
   // production error handler
   
   exports.productionErrors = (err, req, res, next) => {
+    console.log(err)
     res.status(err.status || 500)
         .send({
-             message: err.message,
-             error: {},
+             error: err.errors,
         })
   }
