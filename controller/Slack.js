@@ -16,7 +16,7 @@ exports.sendInvite = async (req, res, next) => {
 	});
     
     if(!result.data.ok) {
-        const error = result.data.error;
+		const error = { errors: result.data.error };
         next(error);
         
     } else {
