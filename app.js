@@ -17,8 +17,8 @@ require('dotenv').config()
 const corsOptions = {
   origin: (app.get('env') === 'development'
     ? /https?:\/\/localhost:\d+/
-    : [/\.netlify\.com$/, /https?:\/\/fcccolumbus\.com.+$/, /https?:\/\/localhost:\d+/]),
-  methods: 'GET',
+    : [/\.netlify\.com$/, /https?:\/\/fcccolumbus\.com.+$/, /http?:\/\/shrouded-fortress-68159\.herokuapp.com\.com.+$/]),
+  methods: ['GET', 'POST'],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
