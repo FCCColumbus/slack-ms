@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 
 app.use('/', index);
-app.use('/invite', invite);
+app.use('/api/invite', invite);
 
 
 app.use(errorHandler.notFound)
