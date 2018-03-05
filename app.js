@@ -29,11 +29,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors(corsOptions));
 
 
 app.use('/', index);
-app.use('/api/invite', invite);
+app.use('/api/invite', cors(corsOptions), invite);
 
 
 app.use(errorHandler.notFound)
