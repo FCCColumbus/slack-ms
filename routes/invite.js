@@ -3,9 +3,14 @@ const slackController = require('../controller/Slack');
 const router = express.Router();
 require('dotenv').config();
 
-/* GET users listing. */
-router.post('/', slackController.sendInvite);
+const logHeaders = (req, res) => {
+    console.log(req.headers)
+}
 
 //original callback for Slack's API call
+router.post('/', logHeaders, slackController.sendInvite);
+
+
+
 
 module.exports = router;
