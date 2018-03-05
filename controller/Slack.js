@@ -7,6 +7,8 @@ exports.sendInvite = async (req, res, next) => {
 		firstName: req.body.first_name
 	};
 
+	console.log(req.headers)
+
 	const result = await axios.get(slackBase, {
 		params: {
 			token: process.env.CLIENT_TOKEN,
